@@ -4,7 +4,7 @@ import authorization from "../../../../middlewares/authorization";
 export default async function handler(req, res) {
   if (req.method !== "DELETE") return res.status(405).end();
 
-  const auth = authorization(req, res);
+  const auth = await authorization(req, res);
 
   const { id } = req.query;
   const remove = await db("posts").where({ id }).del();
