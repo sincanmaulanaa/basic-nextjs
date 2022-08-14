@@ -1,10 +1,17 @@
-import Image from "next/dist/client/image";
+import Image from "next/image";
 import Link from "next/link";
 import workflowLogo from "../../public/images/workflow.svg";
 import { LockClosedIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import Cookie from "js-cookie";
 import Banner from "../../components/Banner";
+import Router from "next/router";
+import { unauthorizationPage } from "../../middlewares/authorizationPage";
+
+export async function getServerSideProps(context) {
+  await unauthorizationPage(context);
+  return { props: {} };
+}
 
 export default function Login() {
   const [fields, setFields] = useState({
@@ -34,6 +41,7 @@ export default function Login() {
     setStatus("success");
 
     Cookie.set("token", loginRes.token);
+    Router.push("/posts");
   }
 
   function fieldHandler(e) {
