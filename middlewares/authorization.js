@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { resolve } from "styled-jsx/css";
 
 export default function authorization(req, res) {
   return new Promise((resolve, reject) => {
