@@ -3,6 +3,12 @@ import { useState } from "react";
 import workflowLogo from "../../public/images/workflow.svg";
 import Banner from "../../components/Banner";
 import Link from "next/link";
+import { unauthorizationPage } from "../../middlewares/authorizationPage";
+
+export async function getServerSideProps(context) {
+  await unauthorizationPage(context);
+  return { props: {} };
+}
 
 export default function Register() {
   const [fields, setFields] = useState({ email: "", password: "" });
