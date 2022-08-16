@@ -5,13 +5,13 @@
  */
 module.exports = {
   development: {
-    client: "mysql",
+    client: process.env.DB_CLIENT,
     connection: {
-      host: "127.0.0.1",
+      host: process.env.DB_HOST,
       port: 3306,
-      user: "nextjs",
-      password: "sincan2003",
-      database: "fullstacknextjs",
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
     },
   },
 
