@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       id: checkUser.id,
       email: checkUser.email,
     },
-    "sincanGanteng",
+    process.env.JWT_SECRET,
     {
       expiresIn: "1d",
     }
